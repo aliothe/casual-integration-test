@@ -1,14 +1,15 @@
 #FROM quay.io/wildfly/wildfly:latest
 #FROM quay.io/wildfly/wildfly:latest-jdk11
-#FROM quay.io/wildfly/wildfly:latest-jdk17
+FROM quay.io/wildfly/wildfly:latest-jdk17
 #FROM quay.io/wildfly/wildfly:27.0.0.Final-jdk17
-FROM quay.io/wildfly/wildfly:26.1.3.Final-jdk17
+#FROM quay.io/wildfly/wildfly:26.1.3.Final-jdk17
+
 
 USER root
 
-RUN yum update-minimal -y
-RUN yum install -y emacs
-RUN yum clean all -y
+#RUN yum update-minimal -y
+#RUN yum install -y emacs
+#RUN yum clean all -y
 
 USER 1001
 
@@ -18,9 +19,9 @@ RUN /opt/jboss/wildfly/bin/add-user.sh wildfly wildfly1 --silent
 
 RUN mkdir /opt/jboss/wildfly/casual
 
-ENV CASUAL_VERSION 2.2.15
-ENV CASUAL_CALLER_VERSION 2.2.7
-ENV CASUAL_TEST_APPLICATION_VERSION 1.0.3
+ENV CASUAL_VERSION 3.2.21
+ENV CASUAL_CALLER_VERSION 3.2.7
+ENV CASUAL_TEST_APPLICATION_VERSION 2.0.2
 
 ENV CASUAL_HOST=0.0.0.0
 ENV CASUAL_PORT=7771
