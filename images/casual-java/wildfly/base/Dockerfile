@@ -19,9 +19,10 @@ RUN /opt/jboss/wildfly/bin/add-user.sh wildfly wildfly1 --silent
 
 RUN mkdir /opt/jboss/wildfly/casual
 
-ENV CASUAL_VERSION 3.2.21
-ENV CASUAL_CALLER_VERSION 3.2.7
+ENV CASUAL_VERSION 3.2.22
+ENV CASUAL_CALLER_VERSION 3.2.8
 ENV CASUAL_TEST_APPLICATION_VERSION 2.0.2
+ENV GSON_VERSION 2.10.1
 
 ENV CASUAL_HOST=0.0.0.0
 ENV CASUAL_PORT=7771
@@ -32,12 +33,12 @@ COPY files/casual-inbound-handler-api-${CASUAL_VERSION}.jar \
      	files/casual-fielded-annotations-${CASUAL_VERSION}.jar \
 	files/casual-service-discovery-extension-${CASUAL_VERSION}.jar \
 	files/casual-api-${CASUAL_VERSION}.jar \
-	files/gson-2.9.0.jar \
+	files/gson-${GSON_VERSION}.jar \
 	files/objenesis-2.6.jar	\
 	/opt/jboss/wildfly/casual/
 
 RUN /opt/jboss/wildfly/bin/jboss-cli.sh --command="module add --name=se.laz.casual \
-	--resources=/opt/jboss/wildfly/casual/casual-inbound-handler-api-${CASUAL_VERSION}.jar:/opt/jboss/wildfly/casual/casual-fielded-annotations-${CASUAL_VERSION}.jar:/opt/jboss/wildfly/casual/casual-service-discovery-extension-${CASUAL_VERSION}.jar:/opt/jboss/wildfly/casual/casual-api-${CASUAL_VERSION}.jar:/opt/jboss/wildfly/casual/gson-2.9.0.jar:/opt/jboss/wildfly/casual/objenesis-2.6.jar \
+	--resources=/opt/jboss/wildfly/casual/casual-inbound-handler-api-${CASUAL_VERSION}.jar:/opt/jboss/wildfly/casual/casual-fielded-annotations-${CASUAL_VERSION}.jar:/opt/jboss/wildfly/casual/casual-service-discovery-extension-${CASUAL_VERSION}.jar:/opt/jboss/wildfly/casual/casual-api-${CASUAL_VERSION}.jar:/opt/jboss/wildfly/casual/gson-${GSON_VERSION}.jar:/opt/jboss/wildfly/casual/objenesis-2.6.jar \
                 --dependencies=javaee.api,sun.jdk"
 
 COPY files/casual-fields.json /casual-fields.json

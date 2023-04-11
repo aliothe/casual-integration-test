@@ -23,6 +23,13 @@ spec:
         - containerPort: 9990
         - containerPort: 8080
         - containerPort: 8787
+        env:
+          - name: JAVA_TOOL_OPTIONS
+            value:
+          - name: JAVA_OPTS
+            value: -Xms256m -Xmx256m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/wildfly-27.1.0-Final-heap-dump-2023-04-05-256m.hprof
+          - name: JAVA_FORWARD_SERVICE_NAME
+            value: casual/example/advertised/echo
       - name: casual
         image: casual-domain:latest
         securityContext:
