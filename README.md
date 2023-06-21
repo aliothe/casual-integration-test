@@ -73,3 +73,10 @@ kubectl logs -c container-name pod-name  --trace
 ```bash
 kubectl exec --stdin --tty pod-name  -c container-name -- /bin/sh
 ```
+
+
+# Monitoring
+
+For wildfly we recommend using VisualVM - be sure to enable the appropriate plugins.
+You can then add a jmx connection such as service:jmx:remote+http://wildfly-service-ip:9990
+
