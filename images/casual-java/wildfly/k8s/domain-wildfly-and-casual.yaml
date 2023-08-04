@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wildfly-and-casual
+  labels:
+    app: wildfly-and-casual
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wildfly-and-casual
+  template:
+    metadata:
+      labels:
+        app: wildfly-and-casual
+    spec:
+      containers:
+      - name: wildfly
+        image: wildfly-casual-java-test-application-using-local-casual:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 7772
+        - containerPort: 9990
+        - containerPort: 8080
+        - containerPort: 8787
+        env:
+          - name: JAVA_TOOL_OPTIONS
+            value:
+          - name: JAVA_OPTS
+            value: -Xms256m -Xmx256m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/wildfly-26.1.3-Final-heap-dump-2023-04-25-256m.hprof
+          - name: JAVA_FORWARD_SERVICE_NAME
+            value: casual/example/advertised/echo
+      - name: casual
+        image: casual-domain-1.5.13:latest
+        securityContext:
+          capabilities:
+            add:
+              - SYS_PTRACE
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 7771
+        env:
+          - name: CASUAL_LOG
+            value: error|warning
