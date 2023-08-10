@@ -1,4 +1,4 @@
-from casual/middleware:1.5.11
+from casual/middleware:1.6.11
 
 MAINTAINER flurig <flurig@localhost>
 

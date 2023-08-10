@@ -31,7 +31,7 @@ spec:
           - name: JAVA_FORWARD_SERVICE_NAME
             value: casual/example/advertised/echo
       - name: casual
-        image: casual-domain-1.5.13:latest
+        image: casual-domain-1.6.11:latest
         securityContext:
           capabilities:
             add:

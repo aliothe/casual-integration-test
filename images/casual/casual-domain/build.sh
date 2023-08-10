@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 THE_CONFIG_DIR=${1:-config/config-casual-with-java}
-THE_IMAGE_NAME=${2:-casual-domain}
+THE_IMAGE_NAME=${2:-casual-domain-1.6.11}
 
 echo Building the domain $THE_IMAGE_NAME using the config dir $THE_CONFIG_DIR
 
