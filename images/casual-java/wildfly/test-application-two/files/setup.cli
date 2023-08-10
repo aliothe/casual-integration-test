@@ -39,8 +39,8 @@ $connectionDefinitionNode/config-properties=PortNumber:add(value=$CASUAL_PORT)
 $connectionDefinitionNode/config-properties=NetworkConnectionPoolName:add(value=$CASUAL_HOST-pool)
 $connectionDefinitionNode/config-properties=NetworkConnectionPoolSize:add(value=1)
 
-deploy ${env.BASE_PATH}/casual-jca-app-${env.CASUAL_VERSION}.ear
-deploy ${env.BASE_PATH}/casual-caller-app-${env.CASUAL_CALLER_VERSION}.ear
+deploy ${env.WILDFLY_HOME}/casual-jca-app-${env.CASUAL_VERSION}.ear
+deploy ${env.WILDFLY_HOME}/casual-caller-app-${env.CASUAL_CALLER_VERSION}.ear
 
 ###
 data-source add --name=order --driver-name=h2 --enabled=true --jndi-name=java:jboss/datasources/order --connection-url=jdbc:h2:mem:order;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false --user-name=sa --password=sa --use-java-context=true --statistics-enabled=${wildfly.datasources.statistics-enabled:${wildfly.statistics-enabled:false}}
