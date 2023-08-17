@@ -3,6 +3,7 @@ FROM wildfly-base:latest
 ENV JAVA_FORWARD_SERVICE_NAME casual/example/echo
 ENV CASUAL_HOST=wildfly-inbound
 ENV CASUAL_PORT=7772
+ENV CASUAL_INBOUND_PORT=7772
 
 COPY files/setup.cli /opt/jboss/wildfly
 RUN /opt/jboss/wildfly/bin/jboss-cli.sh --file=/opt/jboss/wildfly/setup.cli
