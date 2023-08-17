@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: wildfly
-        image: wildfly-casual-java-test-application-using-java-casual:latest
+        image: wildfly-casual-java-test-application-using-java-casual-wildfly29:latest
         imagePullPolicy: Never
         ports:
         - containerPort: 7772

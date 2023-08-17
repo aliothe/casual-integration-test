@@ -9,7 +9,7 @@ set CASUAL_INBOUND_PORT=${env.CASUAL_INBOUND_PORT}
 set LOG_LEVEL=${env.LOG_LEVEL}
 
 # turn off jaeger tracing, it's buggy
-/subsystem=microprofile-opentracing-smallrye/jaeger-tracer=jaeger:write-attribute(name=sampler-param, value=0)
+#/subsystem=microprofile-opentracing-smallrye/jaeger-tracer=jaeger:write-attribute(name=sampler-param, value=0)
 
 # remove active mq
 #/subsystem=messaging-activemq:remove()

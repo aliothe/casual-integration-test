@@ -1,7 +1,9 @@
 # Has OOM problem
-FROM quay.io/wildfly/wildfly:26.1.3.Final-jdk17
+#FROM quay.io/wildfly/wildfly:26.1.3.Final-jdk17
 # Has OOM problem
 #FROM quay.io/wildfly/wildfly:23.0.2.Final
+# Jakarta EE
+FROM quay.io/wildfly/wildfly:29.0.0.Final-jdk17
 
 USER root
 
@@ -14,9 +16,9 @@ RUN /opt/jboss/wildfly/bin/add-user.sh wildfly wildfly1 --silent
 
 RUN mkdir /opt/jboss/wildfly/casual
 
-ENV CASUAL_VERSION 2.2.15
-ENV CASUAL_CALLER_VERSION 2.2.7
-ENV CASUAL_TEST_APPLICATION_VERSION 1.0.2
+ENV CASUAL_VERSION 3.2.24
+ENV CASUAL_CALLER_VERSION 3.2.12
+ENV CASUAL_TEST_APPLICATION_VERSION 2.0.2
 ENV CASUAL_INBOUND_STARTUP_MODE trigger
 
 COPY files/casual-inbound-handler-api-${CASUAL_VERSION}.jar \
